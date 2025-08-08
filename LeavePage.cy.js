@@ -1,5 +1,4 @@
 
-
 describe('RangeHRM login', () => {
 
   it('log in with correctly', () => {
@@ -126,4 +125,25 @@ it('live list - Clicks next month button 4 times right', () => {
     })
 
   })
+  it.only ('write user info', () => {
+
+   cy.loginapp('Admin','admin123')
+   cy.get(':nth-child(6) > .oxd-main-menu-item > .oxd-text').click()
+   cy.get(':nth-child(2) > .orangehrm-tabs-item').click()
+   cy.get(':nth-child(3) > .oxd-grid-3 > :nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-input')
+   .type('Street 1')
+   cy.get(':nth-child(3) > .oxd-grid-3 > :nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input')
+   .type('Street 2')
+   cy.get(':nth-child(3) > .oxd-grid-3 > :nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input')
+   .type('tbilisi');
+   cy.get(':nth-child(4) > .oxd-input-group > :nth-child(2) > .oxd-input')
+   .type('tbilisi');
+   cy.get(':nth-child(5) > .oxd-input-group > :nth-child(2) > .oxd-input')
+   .type('32123')
+   cy.get('.oxd-select-text').click()
+   cy.contains('span', 'Georgia', { timeout: 10000 }).scrollIntoView().should('be.visible').click()
+
+
+    })
+
 })
